@@ -1,5 +1,6 @@
-import useSWR, { Key, Fetcher, SWRResponse, SWRConfiguration } from 'swr';
-import { sanitizeOptions } from './helper';
+import useSWR, { Fetcher, Key, SWRConfiguration, SWRResponse } from "swr";
+
+import { sanitizeOptions } from "./helper";
 
 /***
  * url: absolute url of the API e.g https://dev.com/user?include=details
@@ -25,7 +26,7 @@ const useFetch = <T>({
   url,
   options,
   configOverride = {},
-  enabled = true
+  enabled = true,
 }: FetchArgTypes): SWRResponse<T, Error> => {
   const fetcher: Fetcher<T, Key> = async (
     url: string,
@@ -36,7 +37,7 @@ const useFetch = <T>({
     // If the status code is not in the range 200-299,
     // we still try to parse and throw it.
     if (!res.ok) {
-      const error: Error = new Error('Failed to fetch');
+      const error: Error = new Error("Failed to fetch");
       throw error;
     }
 
@@ -44,7 +45,7 @@ const useFetch = <T>({
   };
 
   const config = {
-    shouldRetryOnError: false
+    shouldRetryOnError: false,
   };
   const sanitizedOptions = sanitizeOptions(options);
   return useSWR<T, Error>(
@@ -52,7 +53,7 @@ const useFetch = <T>({
     fetcher,
     {
       ...config,
-      ...configOverride
+      ...configOverride,
     }
   );
 };

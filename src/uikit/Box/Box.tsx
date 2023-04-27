@@ -1,18 +1,19 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import {
-  color,
-  space,
-  layout,
-  flexbox,
   border,
-  shadow,
+  color,
+  flexbox,
+  layout,
   position,
-} from 'styled-system';
-import { BoxPropTypes } from './types';
+  shadow,
+  space,
+} from "styled-system";
+
+import { BoxPropTypes } from "./types";
 
 const Box = styled.div<BoxPropTypes>(
   {
-    boxSizing: 'border-box',
+    boxSizing: "border-box",
     minWidth: 0,
   },
   color,

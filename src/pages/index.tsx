@@ -1,11 +1,32 @@
-import styled from 'styled-components';
-import { Color } from 'uikit';
+import { signIn, signOut, useSession } from "next-auth/react";
 
-const H1 = styled.h1`
-  color: ${({ color }) => color};
-  text-align: center;
-`;
+import { useMixPanel } from "hooks/useMixpanel";
 
 export default function Home() {
-  return <H1 color={Color.black}>Welcome to UIX Web Platform</H1>;
+  const { data: session, ...args } = useSession();
+  const { actions } = useMixPanel();
+
+  if (session) {
+    return (
+      <>
+        Signed in as {session.user?.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    );
+  }
+  return (
+    <>
+      Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
+      <button
+        onClick={() => {
+          actions.track("Signed Up", {
+            "Signup Type": "Referral",
+          });
+        }}
+      >
+        Mix
+      </button>
+    </>
+  );
 }

@@ -1,6 +1,6 @@
-/* eslint-disable no-relative-import-paths/no-relative-import-paths */
-import styled from 'styled-components';
-import { Color } from '../../src/uikit';
+import styled from "styled-components";
+
+import { Color } from "../../src/uikit";
 
 const Box = styled.div<{
   bgColor: string;

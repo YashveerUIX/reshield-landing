@@ -1,12 +1,12 @@
 import {
-  ColorProps,
-  SpaceProps,
-  LayoutProps,
-  FlexboxProps,
   BorderProps,
-  ShadowProps,
+  ColorProps,
+  FlexboxProps,
+  LayoutProps,
   PositionProps,
-} from 'styled-system';
+  ShadowProps,
+  SpaceProps,
+} from "styled-system";
 
 export type BoxPropTypes = ColorProps &
   SpaceProps &

@@ -1,6 +1,7 @@
-import styled from 'styled-components';
-import { color, typography, layout, space } from 'styled-system';
-import { TextPropTypes } from './types';
+import styled from "styled-components";
+import { color, layout, space, typography } from "styled-system";
+
+import { TextPropTypes } from "./types";
 
 const Text = styled.p<TextPropTypes>(
   {

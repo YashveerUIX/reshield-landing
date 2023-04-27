@@ -1,6 +1,7 @@
-import styled from 'styled-components';
-import { color, space, variant } from 'styled-system';
-import { HeadingPropTypes } from './types';
+import styled from "styled-components";
+import { color, space, variant } from "styled-system";
+
+import { HeadingPropTypes } from "./types";
 
 const variants = {
   1: { fontSize: 7 },
@@ -23,7 +24,7 @@ const Heading = styled(HeadingBase)(
   },
   variant({
     variants,
-    prop: 'level',
+    prop: "level",
   }),
   space,
   color

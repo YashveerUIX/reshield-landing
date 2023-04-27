@@ -1,14 +1,32 @@
-import type { AppProps } from 'next/app';
-import GlobalStyle from 'global/globalstyles';
-import { usePageLoadTracking } from 'hooks';
+import { useEffect, useState } from "react";
+import mixpanel from "mixpanel-browser";
+import type { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "styled-components";
 
-function MyApp({ Component, pageProps }: AppProps) {
+import GlobalStyle from "global/globalstyles";
+import { darkTheme, lightTheme, ThemeVariant } from "global/styledTheme";
+
+import { usePageLoadTracking } from "hooks";
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const [theme] = useState(ThemeVariant.DARK);
+
   usePageLoadTracking();
+
+  useEffect(() => {
+    mixpanel.init("TOKEN");
+  }, []);
+
   return (
-    <>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </>
+    <SessionProvider session={session}>
+      <ThemeProvider
+        theme={theme === ThemeVariant.LIGHT ? lightTheme : darkTheme}
+      >
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </SessionProvider>
   );
 }
 

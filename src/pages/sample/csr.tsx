@@ -1,5 +1,6 @@
-import { useFetch } from 'hooks';
-import Link from 'next/link';
+import Link from "next/link";
+
+import { useFetch } from "hooks";
 
 type Item = {
   title: string;
@@ -11,7 +12,7 @@ interface Results {
 
 const Home = () => {
   const { data, error } = useFetch<Results>({
-    url: 'https://swapi.dev/api/films/'
+    url: "https://swapi.dev/api/films/",
   });
 
   if (error) return null;
