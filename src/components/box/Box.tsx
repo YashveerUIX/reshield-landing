@@ -1,4 +1,13 @@
 import styled from "styled-components";
+import type {
+  BorderProps,
+  ColorProps,
+  FlexboxProps,
+  LayoutProps,
+  PositionProps,
+  ShadowProps,
+  SpaceProps,
+} from "styled-system";
 import {
   border,
   color,
@@ -9,7 +18,13 @@ import {
   space,
 } from "styled-system";
 
-import { BoxPropTypes } from "./types";
+export type BoxPropTypes = ColorProps &
+  SpaceProps &
+  LayoutProps &
+  FlexboxProps &
+  BorderProps &
+  ShadowProps &
+  PositionProps;
 
 const Box = styled.div<BoxPropTypes>(
   {

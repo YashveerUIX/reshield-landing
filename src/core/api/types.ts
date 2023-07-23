@@ -1,35 +1,34 @@
 import { AxiosRequestConfig } from "axios";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export type BaseResponse<R> = {
-  code: number;
-  message: string;
+export type BaseResponse<R = any> = {
   isSuccessful: boolean;
-  data: R;
+  response: R;
+  status: string;
+  statusCode: number;
+  responseData: { [k: string]: string };
+  message: string;
 };
 
-export type Params<T> = {
+export type Params = {
   url: string;
   query?: Query;
-  options?: T;
+  options?: AxiosRequestConfig;
 };
 
 export type Data<D> = {
   data: D;
 };
 
-export type PostParams<T> = Data<T>;
+export type PostParams<T> = Params & Data<T>;
 
-export type Query = { [key in string]: string };
+export interface HttpClient {
+  get: <R>(params: Params) => Promise<BaseResponse<R>>;
 
-export interface HttpClient<PO> {
-  get: <R>(params: Params<PO>) => Promise<BaseResponse<R>>;
+  post: <T, R>(params: PostParams<T>) => Promise<BaseResponse<R>>;
 
-  post: <T, R>(params: PostParams<T> & Params<PO>) => Promise<BaseResponse<R>>;
+  put: <T, R>(params: PostParams<T>) => Promise<BaseResponse<R>>;
 
-  put: <T, R>(params: PostParams<T> & Params<PO>) => Promise<BaseResponse<R>>;
-
-  delete: <T, R>(
-    params: PostParams<T> & Params<PO>
-  ) => Promise<BaseResponse<R>>;
+  delete: <T, R>(params: PostParams<T>) => Promise<BaseResponse<R>>;
 }
+
+export type Query = { [k: string]: any };

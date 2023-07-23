@@ -1,7 +1,16 @@
 import styled from "styled-components";
+import type {
+  ColorProps,
+  LayoutProps,
+  SpaceProps,
+  TypographyProps,
+} from "styled-system";
 import { color, layout, space, typography } from "styled-system";
 
-import { TextPropTypes } from "./types";
+export type TextPropTypes = ColorProps &
+  TypographyProps &
+  LayoutProps &
+  SpaceProps;
 
 const Text = styled.p<TextPropTypes>(
   {
