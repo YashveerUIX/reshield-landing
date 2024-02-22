@@ -1,30 +1,17 @@
 import styled from "styled-components";
-import type {
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  PositionProps,
-  ShadowProps,
-  SpaceProps,
-} from "styled-system";
 import {
   border,
   color,
   flexbox,
+  gridColumnGap,
+  gridRowGap,
   layout,
   position,
   shadow,
   space,
 } from "styled-system";
 
-export type BoxPropTypes = ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  BorderProps &
-  ShadowProps &
-  PositionProps;
+import { BoxPropTypes } from "./types";
 
 const Box = styled.div<BoxPropTypes>(
   {
@@ -37,7 +24,9 @@ const Box = styled.div<BoxPropTypes>(
   flexbox,
   border,
   shadow,
-  position
+  position,
+  gridColumnGap,
+  gridRowGap
 );
 
 export default Box;
