@@ -1,12 +1,12 @@
 import React from "react";
-import { Box } from "uikit";
 
 import Header from "components/header";
-
+import HeroContent from "components/home/heroContent";
 function index() {
   return (
     <>
       <Header />
+      <HeroContent />
     </>
   );
 }
