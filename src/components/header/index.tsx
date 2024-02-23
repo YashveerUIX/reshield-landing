@@ -10,7 +10,7 @@ const HeaderRow = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 120px;
+  padding: 32px 120px 16px;
 `;
 
 const LogoContainer = styled(Box)``;
@@ -35,7 +35,7 @@ function Header() {
         position: "fixed",
         top: 0,
         width: "100%",
-        zIndex: 4,
+        zIndex: 2,
       }}
     >
       <HeaderRow>
